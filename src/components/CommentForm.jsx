@@ -59,7 +59,8 @@ const CommentForm = () => {
 
     dispatch(
       addComment({
-        id: formattedDate,
+        id: Date.now(),
+        date: formattedDate,
         comment: data.comment,
         note: data.note,
       })

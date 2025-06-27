@@ -19,6 +19,9 @@ const CommentList = ({ comments }) => {
           <div>
             <div className="fw-bold mb-1">Note : {c.note}/5</div>
             <div>{c.comment}</div>
+            {c.date && (
+              <div className="text-muted small mt-1">Posté le : {c.date}</div>
+            )}
           </div>
           <Button
             variant="danger"
