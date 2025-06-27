@@ -1,9 +1,10 @@
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { ListGroup, Button, Alert } from "react-bootstrap";
 import { deleteComment } from "../redux/commentSlice";
 
-const CommentList = ({ comments }) => {
+const CommentList = () => {
   const dispatch = useDispatch();
+  const comments = useSelector((state) => state.comments);
 
   if (!comments || comments.length === 0) {
     return <Alert variant="info">Aucun commentaire pour le moment</Alert>;

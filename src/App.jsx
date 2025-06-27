@@ -10,7 +10,6 @@ const App = () => {
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const comments = useSelector((state) => state.comments);
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -26,7 +25,9 @@ const App = () => {
         setMovie(data[0]);
       } catch (err) {
         console.error("Erreur lors du chargement du film :", err);
-        setError("Impossible de charger les informations du film. Veuillez réessayer plus tard.");
+        setError(
+          "Impossible de charger les informations du film. Veuillez réessayer plus tard."
+        );
       } finally {
         setLoading(false);
       }
@@ -87,7 +88,7 @@ const App = () => {
             <Card.Body>
               <Card.Title>{movie.original_title}</Card.Title>
               <Card.Subtitle className="mb-2 text-muted">
-                Sortie le {" "}
+                Sortie le{" "}
                 {new Date(movie.release_date).toLocaleDateString("fr-FR")}
               </Card.Subtitle>
               <Card.Text>{movie.overview}</Card.Text>
@@ -100,7 +101,7 @@ const App = () => {
           <h4>Commentaires</h4>
           <CommentForm />
 
-          <CommentList comments={comments} />
+          <CommentList />
         </Col>
       </Row>
     </Container>
