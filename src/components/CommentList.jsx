@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { Card, Button, Alert } from "react-bootstrap";
+import { ListGroup, Button, Alert } from "react-bootstrap";
 import { deleteComment } from "../redux/commentSlice";
 
 const CommentList = ({ comments }) => {
@@ -10,25 +10,26 @@ const CommentList = ({ comments }) => {
   }
 
   return (
-    <>
+    <ListGroup>
       {comments.map((c) => (
-        <Card key={c.id} className="mb-2">
-          <Card.Body>
-            <p className="mb-2 text-dark fw-bold">Note : {c.note}/5</p>
-            <Card.Text>{c.comment}</Card.Text>
-            <div className="d-flex justify-content-end">
-              <Button
-                variant="danger"
-                size="sm"
-                onClick={() => dispatch(deleteComment(c.id))}
-              >
-                Supprimer
-              </Button>
-            </div>
-          </Card.Body>
-        </Card>
+        <ListGroup.Item
+          key={c.id}
+          className="d-flex justify-content-between align-items-start"
+        >
+          <div>
+            <div className="fw-bold mb-1">Note : {c.note}/5</div>
+            <div>{c.comment}</div>
+          </div>
+          <Button
+            variant="danger"
+            size="sm"
+            onClick={() => dispatch(deleteComment(c.id))}
+          >
+            Supprimer
+          </Button>
+        </ListGroup.Item>
       ))}
-    </>
+    </ListGroup>
   );
 };
 

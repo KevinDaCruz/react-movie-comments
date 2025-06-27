@@ -26,7 +26,7 @@ const App = () => {
         setMovie(data[0]);
       } catch (err) {
         console.error("Erreur lors du chargement du film :", err);
-        setError(err.message);
+        setError("Impossible de charger les informations du film. Veuillez réessayer plus tard.");
       } finally {
         setLoading(false);
       }
